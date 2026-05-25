@@ -1,0 +1,6 @@
+{
+  "name": "ANJUMAN",
+  "description": "ANJUMAN - A 5-star royal luxury hotel experience where royalty meets ultimate comfort.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

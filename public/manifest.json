@@ -1,0 +1,24 @@
+{
+  "name": "ANJUMAN Hotel & Palatial Suites",
+  "short_name": "ANJUMAN",
+  "description": "5-Star Royal Luxury Hotel & Palatial Suites in Udaipur, Rajasthan",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D0D0D",
+  "theme_color": "#C9A84C",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://img.icons8.com/color/512/crown.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://img.icons8.com/color/192/crown.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

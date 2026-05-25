@@ -1,0 +1,367 @@
+@import "tailwindcss";
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8D5A3;
+  --gold-dark: #8B6914;
+  --black: #0D0D0D;
+  --navy: #1A1A2E;
+  --white: #FAFAFA;
+  --gray: #4A4A4A;
+  --gray-light: #F5F5F5;
+  
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+  
+  --shadow-gold: 0 0 30px rgba(201, 168, 76, 0.3);
+  --shadow-dark: 0 10px 30px rgba(0,0,0,0.2);
+  
+  --transition: all 0.3s ease;
+  --border-radius: 12px;
+  --border-radius-lg: 20px;
+}
+
+@theme {
+  --color-brand-gold: #C9A84C;
+  --color-brand-navy: #1A1A2E;
+  --color-brand-cream: #E8D5A3;
+  --color-brand-black: #0D0D0D;
+  --color-brand-white: #FAFAFA;
+  --color-text-gray: #B0B0C4;
+
+  --font-primary: 'Poppins', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-accent: 'Cormorant Garamond', serif;
+}
+
+/* Touch & Mobile Optimizations */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  overscroll-behavior-y: contain; /* Prevents pull to refresh on mobile devices */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dyslexia Accessible Font Override */
+html.accessibility-dyslexic, html.accessibility-dyslexic * {
+  font-family: "Comic Sans MS", "Chalkboard SE", "Comic Neue", sans-serif !important;
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+  line-height: 1.6 !important;
+}
+
+/* High Contrast Override System */
+html.accessibility-high-contrast {
+  filter: contrast(180%) saturate(140%) !important;
+}
+html.accessibility-high-contrast body {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+html.accessibility-high-contrast .bg-brand-navy,
+html.accessibility-high-contrast .bg-indigo-950,
+html.accessibility-high-contrast .bg-[#111122]/40 {
+  background-color: #000000 !important;
+  border-color: #FFFFFF !important;
+  color: #FFFFFF !important;
+}
+html.accessibility-high-contrast button,
+html.accessibility-high-contrast a {
+  border-color: #FFFFFF !important;
+  color: #FFFF00 !important;
+  text-decoration: underline !important;
+}
+
+/* Reduced Motion Override Class */
+html.accessibility-reduced-motion *,
+html.accessibility-reduced-motion *::before,
+html.accessibility-reduced-motion *::after {
+  animation-delay: -1ms !important;
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  background-attachment: initial !important;
+  scroll-behavior: auto !important;
+  transition-delay: 0s !important;
+  transition-duration: 0s !important;
+}
+
+/* WhatsApp pulse keyframe */
+@keyframes whatsapp-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.animate-whatsapp-pulse {
+  animation: whatsapp-pulse 2s infinite;
+}
+
+button, a, select, input {
+  touch-action: manipulation; /* Optimizes double tab and pinch gestures on mobile browsers */
+}
+
+/* Ensure minimum touch target for touch elements in responsive screens */
+@media (max-width: 768px) {
+  button, .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Windows compatibility and Smooth Font Rendering */
+html {
+  font-size: 100%; /* respects user browser settings font size */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Windows Scrollbar Custom Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+}
+
+/* Performance Mobile: reduce animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Windows High Contrast Mode Accessibility */
+@media (forced-colors: active) {
+  .gold-glow {
+    text-shadow: none !important;
+  }
+  .bg-gold-gradient {
+    background: ButtonFace !important;
+    color: ButtonText !important;
+    border: 1px solid ButtonText !important;
+  }
+}
+
+
+/* Custom Base Styles */
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-brand-black);
+  color: var(--color-brand-white);
+  overflow-x: hidden;
+}
+
+/* Hide scrollbars but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Gold Shimmer Animation */
+@keyframes gold-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    #C9A84C 0%,
+    #FFF 50%,
+    #C9A84C 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-shimmer 4s linear infinite;
+}
+
+/* Elegant Text Glow */
+.gold-glow {
+  text-shadow: 0 0 10px rgba(201, 168, 76, 0.3), 0 0 20px rgba(201, 168, 76, 0.1);
+}
+
+/* Smooth Transitions */
+.transition-luxury {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Editorial Aesthetic Classes */
+.font-playfair {
+  font-family: 'Playfair Display', 'Georgia', serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-style: italic;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 50%, #C9A84C 100%);
+}
+
+.glass {
+  background: rgba(26, 26, 46, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.text-gold {
+  color: #C9A84C;
+}
+
+.border-gold {
+  border-color: #C9A84C;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #C9A84C 0%, #FFF 50%, #C9A84C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(26, 26, 46, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.glass-dropdown {
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+/* Custom Circle Cursor (Desktop standard) */
+.custom-cursor {
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid var(--color-brand-gold);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor-dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-brand-gold);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Flatpickr-like Calendar Grid Styling */
+.calendar-grid-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.calendar-grid-cell:hover:not(.disabled) {
+  background-color: rgba(201, 168, 76, 0.2);
+}
+
+.calendar-grid-cell.selected {
+  background-color: var(--color-brand-gold);
+  color: var(--color-brand-black);
+  font-weight: 600;
+}
+
+.calendar-grid-cell.disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+/* Ensure global navigation header/menu stays on top of all elements on mobile and touch devices */
+@media (max-width: 768px) {
+  #main-hotel-navbar {
+    position: fixed !important;
+    z-index: 99999 !important;
+    pointer-events: auto !important;
+    background-color: #0c0d1b !important;
+    top: 0 !important;
+  }
+  
+  /* Fix absolute or transparent interfering overlay pointer events blocker */
+  .particle-wrapper, 
+  [class*="particle-"],
+  canvas,
+  #custom-cursor-id,
+  #custom-cursor-dot-id {
+    pointer-events: none !important;
+  }
+}
+
+/* ==========================================================================
+   CRITICAL MOBILE FIXES (Issues 1, 2, and 3)
+   ========================================================================== */
+
+/* ISSUE 1: Page is Completely Frozen (No Scrolling) */
+html, body, .main-container {
+  overflow-y: auto !important;
+  height: auto !important;
+}
+
+@media (max-width: 768px) {
+  .preloader, 
+  #preloader, 
+  .preloader-overlay {
+    display: none !important;
+    pointer-events: none !important;
+  }
+}
+
+/* ISSUE 2: The Dead Mobile Menu (Header & JS Issue) */
+header, 
+#main-hotel-navbar, 
+.navbar {
+  position: relative !important;
+  z-index: 99999 !important;
+}
+
+/* ISSUE 3: The Booking Form Overlap (Hero Section) */
+@media (max-width: 768px) {
+  #royal-booking-bar-wrapper, 
+  .booking-bar, 
+  .booking-form-container {
+    position: relative !important;
+    top: auto !important;
+    transform: none !important;
+    margin-top: 150px !important;
+  }
+}
+
