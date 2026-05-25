@@ -40,7 +40,7 @@
 }
 
 body {
-  overscroll-behavior-y: contain; /* Prevents pull to refresh on mobile devices */
+  overscroll-behavior-y: auto !important; /* Ensures native scrolling behaves perfectly on all devices */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 

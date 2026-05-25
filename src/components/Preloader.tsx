@@ -34,9 +34,15 @@ export default function Preloader() {
       }
     });
 
+    // FAIL-SAFE: Guarantee preloader unmounts after 2 seconds to unfreeze scroll/interaction
+    const fallbackTimer = setTimeout(() => {
+      setVisible(false);
+    }, 2000);
+
     return () => {
       logoAnim.pause();
       progressAnim.pause();
+      clearTimeout(fallbackTimer);
     };
   }, []);
 
