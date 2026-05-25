@@ -177,7 +177,7 @@ export default function App() {
       />
 
       {/* 3. Main Dynamic Content View Switch */}
-      <div className="pt-20">
+      <div className={view === 'home' ? '' : 'pt-20'}>
         
         {view === 'home' && (
           <div className="space-y-0 relative">
